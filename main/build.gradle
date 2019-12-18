@@ -37,6 +37,5 @@ dependencies {
 
     implementation google.appcompat
 
-    implementation common.arouter
 
 }
