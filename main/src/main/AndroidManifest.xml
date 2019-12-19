@@ -2,8 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jason.jan.main">
 
-    <application>
-        <activity android:name=".MainActivity"></activity>
+    <application >
+
+        <activity android:name=".MainActivity">
+
+            <!--集成的时候的首页-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
     </application>
 
 </manifest>

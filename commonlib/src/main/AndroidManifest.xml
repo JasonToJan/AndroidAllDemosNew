@@ -1,2 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jason.jan.commonlib" />
+    package="jason.jan.commonlib" >
+
+    <!--网络权限-->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!--写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!--读权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+</manifest>

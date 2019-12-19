@@ -22,7 +22,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
 
         if (!config.isAssembling) {
-            applicationId "jason.jan.main"
+            applicationId "jason.jan.demos.bluedemo"
         } else {
             //集成模式下Arouter的配置，用于组件间通信的实现
             javaCompileOptions {
