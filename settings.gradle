@@ -1,2 +1,6 @@
-include ':app', ':commonlib', ':main'
+include ':app'//入口
+include ':commonlib'//公共库
+include ':main'//普通组件，只不过可以通过它的UI，进入其他组件
+
+
 rootProject.name='AndroidAllDemosNew'

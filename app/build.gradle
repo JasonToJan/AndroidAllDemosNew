@@ -32,7 +32,7 @@ dependencies {
 
     testImplementation test.junit
     androidTestImplementation test.runner
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation test.espresso
 
     implementation google.appcompat
     implementation google.constraintlayout

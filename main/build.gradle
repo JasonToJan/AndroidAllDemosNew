@@ -1,10 +1,6 @@
 apply plugin: 'com.android.library'
-
-def config  = rootProject.ext.config
-def google  = rootProject.ext.google
-def test    = rootProject.ext.test
-def common  = rootProject.ext.common
-def rare    = rootProject.ext.rare
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion config.compileSdkVersion
@@ -31,11 +27,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     testImplementation test.junit
     androidTestImplementation test.runner
     androidTestImplementation test.espresso
 
     implementation google.appcompat
+    implementation google.constraintlayout
+    implementation google.kotlin_stdlib_jdk7
 
-
+    implementation project(":commonlib")
 }
