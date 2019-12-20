@@ -15,6 +15,7 @@
     <option name="modulesWithSuppressedNotConfigured">
       <set>
         <option value="commonlib" />
+        <option value="main" />
       </set>
     </option>
   </component>

@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 def config  = rootProject.ext.config
 def google  = rootProject.ext.google
 def test    = rootProject.ext.test
@@ -24,6 +28,12 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
+
+//        kapt {
+//            arguments {
+//                arg("moduleName", project.getName())
+//            }
+//        }
     }
 
     buildTypes {
@@ -42,9 +52,12 @@ dependencies {
     androidTestImplementation test.espresso
 
     implementation google.appcompat
+    implementation google.kotlin_stdlib_jdk7
+    implementation google.core_ktx
+    implementation google.kotlin_stdlib
+    implementation google.constraintlayout
 
     implementation common.arouter
-
-
+    annotationProcessor common.arouter_compiler
 
 }

@@ -8,6 +8,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 
+
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
@@ -58,22 +59,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    testImplementation test.junit
-    androidTestImplementation test.runner
-    androidTestImplementation test.espresso
-
-    implementation google.appcompat
-    implementation google.constraintlayout
-    implementation google.kotlin_stdlib_jdk7
-    implementation google.core_ktx
-    implementation google.kotlin_stdlib
 
     implementation project(":commonlib")
 
-    if (config.isAssembling) {
-        //集成模式下需要编译器生成路由通信的代码
-        annotationProcessor common.arouter_compiler
-    }
+    implementation google.appcompat
+    implementation google.kotlin_stdlib_jdk7
+    implementation google.kotlin_stdlib
+
 }
