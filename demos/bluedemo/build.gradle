@@ -59,12 +59,11 @@ android {
 
 dependencies {
 
-    implementation project(":commonlib")
+    implementation project(":common:commonlib")
 
     implementation google.appcompat
+    implementation google.constraintlayout
     implementation google.kotlin_stdlib_jdk7
     implementation google.kotlin_stdlib
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

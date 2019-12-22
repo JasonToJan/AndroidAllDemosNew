@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def config  = rootProject.ext.config
+def google  = rootProject.ext.google
+def test    = rootProject.ext.test
+def common  = rootProject.ext.common
+def rare    = rootProject.ext.rare
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation test.junit
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+
+    implementation google.appcompat
+    implementation google.material
+    implementation google.kotlin_stdlib_jdk7
+    implementation google.core_ktx
+    implementation google.kotlin_stdlib
+    implementation google.constraintlayout
+
+    implementation google.lifecycle_runtime
+    implementation google.lifecycle_extensions
+    kapt google.lifecycle_compiler
+
+    implementation google.dagger2
+    implementation google.dagger2_android
+    implementation google.dagger2_android_support
+    kapt google.dagger2_compiler
+    kapt google.dagger2_android_processor
+    
+    implementation rare.timber
+    implementation rare.android_eventbus
+}

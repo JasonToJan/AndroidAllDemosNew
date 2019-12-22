@@ -52,7 +52,7 @@ dependencies {
     implementation google.core_ktx
     implementation google.kotlin_stdlib
 
-    implementation project(":commonlib") //必须依赖
+    implementation project(":common:commonlib") //必须依赖
 
     if (config.isAssembling) {
 

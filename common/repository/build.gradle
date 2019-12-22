@@ -1,0 +1,89 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def config  = rootProject.ext.config
+def google  = rootProject.ext.google
+def test    = rootProject.ext.test
+def common  = rootProject.ext.common
+def rare    = rootProject.ext.rare
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        //Room
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //DataBinding
+    dataBinding {
+        enabled true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation test.junit
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+
+    implementation google.appcompat
+    implementation google.material
+    implementation google.kotlin_stdlib_jdk7
+    implementation google.core_ktx
+    implementation google.kotlin_stdlib
+    implementation google.constraintlayout
+
+    implementation google.room_runtime
+    kapt google.room_compiler
+    implementation google.room_rxjava2
+
+    implementation google.dagger2
+    kapt google.dagger2_compiler
+
+    implementation common.retrofit
+    implementation common.retrofit_converter_gson
+    implementation common.retrofit_adapter_rxjava2
+    implementation common.okhttp3
+    implementation common.rxjava2
+    implementation common.rxandroid2
+
+    implementation rare.rxerrorhandler2
+    implementation rare.rxcache
+    implementation rare.rxcache_jolyglot_gson
+    implementation rare.timber
+}

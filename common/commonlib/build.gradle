@@ -28,12 +28,6 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-
-//        kapt {
-//            arguments {
-//                arg("moduleName", project.getName())
-//            }
-//        }
     }
 
     buildTypes {

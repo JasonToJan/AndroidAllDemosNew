@@ -9,9 +9,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/commonlib" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/common/arms" />
+            <option value="$PROJECT_DIR$/common/commonlib" />
+            <option value="$PROJECT_DIR$/common/lifecycle" />
+            <option value="$PROJECT_DIR$/common/repository" />
             <option value="$PROJECT_DIR$/demos" />
             <option value="$PROJECT_DIR$/demos/bluedemo" />
+            <option value="$PROJECT_DIR$/demos/weatherdemo" />
             <option value="$PROJECT_DIR$/main" />
           </set>
         </option>

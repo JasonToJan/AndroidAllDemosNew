@@ -1,8 +1,9 @@
 include ':app'//入口
-include ':commonlib'//公共库
+include ':common:commonlib',':common:arms',':common:lifecycle',':common:repository'//公共库
 include ':main'//普通组件，只不过可以通过它的UI，进入其他组件
 
 include ':demos:bluedemo' //蓝牙demo
+include ':demos:weatherdemo' //天气demo
 
 
 rootProject.name='AndroidAllDemosNew'
