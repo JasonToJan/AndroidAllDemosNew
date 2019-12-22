@@ -54,4 +54,6 @@ dependencies {
     implementation common.arouter
     annotationProcessor common.arouter_compiler
 
+    implementation project(":common:arms")
+
 }

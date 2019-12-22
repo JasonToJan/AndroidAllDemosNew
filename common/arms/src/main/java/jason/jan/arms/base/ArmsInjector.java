@@ -11,6 +11,7 @@ import jason.jan.arms.di.component.ArmsComponent;
 import jason.jan.arms.di.component.DaggerArmsComponent;
 import jason.jan.arms.di.module.ArmsConfigModule;
 import jason.jan.arms.di.module.ArmsModule;
+import jason.jan.arms.http.imageloader.glide.GlideArms;
 import jason.jan.arms.http.imageloader.glide.ImageConfigImpl;
 import jason.jan.arms.utils.ArmsUtils;
 import jason.jan.arms.utils.ManifestArmsParser;
@@ -109,7 +110,7 @@ public class ArmsInjector implements IArms {
                         .clear(mApplication, ImageConfigImpl.builder().isClearMemory(true).build());
             }
             //交给 Glide 处理内存情况
-            //GlideArms.get(mApplication).trimMemory(level);
+            GlideArms.get(mApplication).trimMemory(level);
         }
 
         @Override

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import jason.jan.repository.di.component.DaggerRepositoryComponent;
 import jason.jan.repository.di.component.RepositoryComponent;
 import jason.jan.repository.di.module.ClientModule;
 import jason.jan.repository.di.module.RepositoryConfigModule;
@@ -34,11 +35,11 @@ public class RepositoryInjector implements IRepository {
         if (mRepositoryModule == null) {
             mRepositoryModule = new RepositoryModule(mApplication);
         }
-//        mRepositoryComponent = DaggerRepositoryComponent.builder()
-//                .repositoryModule(mRepositoryModule)
-//                .clientModule(new ClientModule(mApplication))
-//                .repositoryConfigModule(getRepositoryConfigModule(mApplication, mConfigRepositories))
-//                .build();
+        mRepositoryComponent = DaggerRepositoryComponent.builder()
+                .repositoryModule(mRepositoryModule)
+                .clientModule(new ClientModule(mApplication))
+                .repositoryConfigModule(getRepositoryConfigModule(mApplication, mConfigRepositories))
+                .build();
         mRepositoryComponent.inject(this);
     }
 
