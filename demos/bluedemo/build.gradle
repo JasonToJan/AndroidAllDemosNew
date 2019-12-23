@@ -12,6 +12,10 @@ android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
 
+    if (config.isAssembling) {
+        resourcePrefix "bluedemo_"
+    }
+
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion

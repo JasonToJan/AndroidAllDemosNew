@@ -23,9 +23,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [moduleName: project.getName()]
+//            }
+//        }
+
+        kapt {
+            arguments {
+                arg("moduleName",project.getName())
             }
         }
     }
@@ -51,9 +57,9 @@ dependencies {
     implementation google.kotlin_stdlib
     implementation google.constraintlayout
 
-    implementation common.arouter
-    annotationProcessor common.arouter_compiler
+//    api common.arouter
+//    kapt common.arouter_compiler
 
-    implementation project(":common:arms")
+    api project(":common:arms")
 
 }

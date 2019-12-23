@@ -6,11 +6,15 @@ if (!config.isAssembling) {
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
+
+    if (config.isAssembling) {
+        resourcePrefix "weatherdemo_"
+    }
 
     defaultConfig {
         minSdkVersion config.minSdkVersion
@@ -34,9 +38,20 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
+            //minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            //minifyEnabled true
+            //shrinkResources true
+            //zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -55,17 +70,43 @@ android {
         }
     }
 
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //DataBinding
+    dataBinding {
+        enabled true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
 
-    implementation project(":common:commonlib")
+    api project(":common:commonlib")
 
     implementation google.appcompat
+    implementation google.recyclerview
+    implementation google.material
     implementation google.constraintlayout
     implementation google.kotlin_stdlib_jdk7
     implementation google.kotlin_stdlib
+    implementation google.dagger2
+    kapt google.dagger2_compiler
+    kapt google.dagger2_android_processor
+    implementation google.room_runtime
+    kapt google.room_compiler
+    implementation google.room_rxjava2
+    implementation google.room_common
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation common.supertextview
+    implementation common.material_searchview
+
+    debugImplementation test.canary_debug
+    releaseImplementation test.canary_release
 }

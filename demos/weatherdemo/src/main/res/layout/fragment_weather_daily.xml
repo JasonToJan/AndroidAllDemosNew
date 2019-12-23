@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="jason.jan.repository.http.Status"/>
+
+        <variable
+            name="viewModel"
+            type="jason.jan.weatherdemo.mvvm.viewmodel.WeatherDailyViewModel"/>
+
+    </data>
+
+    <jason.jan.weatherdemo.mvvm.view.weight.ScrollChildSwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:onRefreshListener="@{() -> viewModel.retry()}"
+        app:refreshing="@{viewModel.STATUS == Status.LOADING}"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/weather_source"
+                layout="@layout/include_logo"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_weather_daily"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="20dp"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weather_source"
+                app:visibleGone="@{viewModel.STATUS == Status.SUCCESS}"
+                tools:listitem="@layout/super_item_daily"
+                />
+
+            <include
+                android:id="@+id/retry"
+                layout="@layout/include_retry"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </jason.jan.weatherdemo.mvvm.view.weight.ScrollChildSwipeRefreshLayout>
+
+</layout>

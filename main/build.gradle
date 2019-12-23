@@ -12,6 +12,10 @@ android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
 
+    if (config.isAssembling) {
+        resourcePrefix "main_"
+    }
+
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
@@ -30,6 +34,12 @@ android {
                     arguments = [moduleName: project.getName()]
                 }
             }
+
+//            kapt {
+//                arguments {
+//                    arg("moduleName",project.getName())
+//                }
+//            }
         }
     }
 

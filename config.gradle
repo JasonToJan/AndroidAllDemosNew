@@ -18,6 +18,8 @@ ext {
             junit                           :   "junit:junit:4.12",
             runner                          :   "androidx.test:runner:1.2.0",
             espresso                        :   "androidx.test.espresso:espresso-core:3.2.0",
+            canary_debug                    :   "com.squareup.leakcanary:leakcanary-android:1.5.4",
+            canary_release                  :   "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4",
     ]
 
     //google官方库
@@ -45,6 +47,7 @@ ext {
             room_runtime                    :   "android.arch.persistence.room:runtime:1.1.1",
             room_compiler                   :   "android.arch.persistence.room:compiler:1.1.1",
             room_rxjava2                    :   "android.arch.persistence.room:rxjava2:1.1.1",
+            room_common                     :   "androidx.room:room-common:2.0.0-rc01",
 
 
             //Dagger2
@@ -91,6 +94,9 @@ ext {
 
             //recyclerview
             baserecyclerview_adapter        :   "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
+
+            supertextview                   :   "com.github.lygttpod:SuperTextView:2.1.5",
+            material_searchview             :   "com.miguelcatalan:materialsearchview:1.4.0",
 
     ]
 

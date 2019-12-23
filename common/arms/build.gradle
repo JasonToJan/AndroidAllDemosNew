@@ -60,27 +60,29 @@ dependencies {
     implementation google.core_ktx
     implementation google.kotlin_stdlib
     implementation google.constraintlayout
-    annotationProcessor google.lifecycle_compiler
-    annotationProcessor google.room_compiler
+    kapt google.lifecycle_compiler
+    kapt google.room_compiler
 
-    implementation google.dagger2
+    api google.dagger2
     kapt google.dagger2_compiler
     kapt google.dagger2_android_processor
-    implementation google.dagger2_android
-    implementation google.dagger2_android_support
+    api google.dagger2_android
+    api google.dagger2_android_support
+    api google.gson
 
     api common.glide
     kapt common.glide_compiler
 
-    implementation common.baserecyclerview_adapter
-    implementation common.rxjava2
-    implementation common.rxandroid2
-    implementation common.retrofit
+    api common.baserecyclerview_adapter
+    api common.rxjava2
+    api common.rxandroid2
+    api common.retrofit
 
-    implementation rare.timber
-    implementation rare.android_eventbus
+    api rare.timber
+    api rare.android_eventbus
+    api rare.rxerrorhandler2
 
-    implementation project(":common:lifecycle")
-    implementation project(":common:repository")
+    api project(":common:lifecycle")
+    api project(":common:repository")
 
 }

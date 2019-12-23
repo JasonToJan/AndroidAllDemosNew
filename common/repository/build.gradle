@@ -68,9 +68,10 @@ dependencies {
     implementation google.kotlin_stdlib
     implementation google.constraintlayout
 
-    implementation google.room_runtime
+    api google.room_runtime
     kapt google.room_compiler
-    implementation google.room_rxjava2
+    api google.room_rxjava2
+    api google.room_common
 
     implementation google.dagger2
     kapt google.dagger2_compiler
@@ -83,7 +84,7 @@ dependencies {
     implementation common.rxandroid2
 
     implementation rare.rxerrorhandler2
-    implementation rare.rxcache
-    implementation rare.rxcache_jolyglot_gson
+    api rare.rxcache
+    api rare.rxcache_jolyglot_gson
     implementation rare.timber
 }

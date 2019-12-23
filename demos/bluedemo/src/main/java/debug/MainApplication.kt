@@ -1,6 +1,7 @@
 package debug
 
-import jason.jan.commonlib.base.BaseApplication
+import jason.jan.arms.base.BaseApplication
+
 
 /**
  * Description: 单独调试的时候用的Application

@@ -47,8 +47,8 @@ dependencies {
     implementation google.kotlin_stdlib
     implementation google.constraintlayout
 
-    implementation google.lifecycle_runtime
-    implementation google.lifecycle_extensions
+    api google.lifecycle_runtime
+    api google.lifecycle_extensions
     kapt google.lifecycle_compiler
 
     implementation google.dagger2

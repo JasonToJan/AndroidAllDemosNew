@@ -58,7 +58,7 @@ dependencies {
 
         implementation project(":main")//主入口
 
-        implementation project(":demos:bluedemo")
+        //implementation project(":demos:bluedemo")
 
         //annotationProcessor common.arouter_compiler
 
